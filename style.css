@@ -1,0 +1,1063 @@
+/* ==========================================================================
+   1. RESET BÁSICO E VARIÁVEIS
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --max-width: 1200px;
+    --primary-color: #e53e3e;      /* Vermelho vibrante principal */
+    --primary-hover: #fc8181;
+    --text-primary: #ffffff;
+    --text-secondary: #a8a8b3;
+    --surface-color: #202024;
+}
+
+body {
+    background-color: #0b0b0b; 
+    background-image: url('assets/noise-texture.png'); 
+    color: #ffffff;
+    font-family: 'Arial', sans-serif; 
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ==========================================================================
+   2. FONTES / LETRAS
+   ========================================================================== */
+.windsong-regular {
+    font-family: "WindSong", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.monsieur-la-doulaise-regular {
+    font-family: "Monsieur La Doulaise", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.syne {
+    font-family: "Syne", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.agbalumo-regular {
+    font-family: "Agbalumo", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.windsong-medium {
+    font-family: "WindSong", cursive;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* ==========================================================================
+   3. ESTRUTURA DO REVESTIMENTO (SCRATCHES)
+   ========================================================================== */
+.scratch-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/aab07930554eba4a472d5b21cf2f7a44.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    mix-blend-mode: screen;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   4. MENU SUPERIOR (HEADER)
+   ========================================================================== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    padding: 12px 0;
+    background-color: rgba(18, 18, 20, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 5;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    order: 3;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.theme-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.theme-btn:hover {
+    transform: scale(1.1) rotate(15deg);
+    color: var(--primary-color);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-link {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 28px;
+    height: 3px;
+    background-color: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   5. SEÇÃO HERO / CAPA
+   ========================================================================== */
+.hero-title-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;    
+    min-height: 100vh;      
+    text-align: center;     
+}
+
+.main-title {
+    font-family: "Syne", sans-serif;
+    padding: 5px;
+    font-size: clamp(4rem, 14vw, 10rem);
+    line-height: 0.85;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    align-items: center;
+    font-weight: 700;
+}
+
+.main-title .F {
+    font-family: "Syne", sans-serif;
+    padding: 5px;
+    font-size: clamp(4rem, 14vw, 10rem);
+    line-height: 0.85;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    align-items: center;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   6. CONTAINER PRINCIPAL SOBRE MIM
+   ========================================================================== */
+.portfolio-container {
+    position: relative;
+    width: 1200px;
+    height: 300px;
+    padding: 40px;
+    z-index: 3;
+}
+
+/* --- ESTILIZAÇÃO DA POLAROID --- */
+.polaroid-wrapper {
+    position: absolute;
+    left: 10%;
+    top: 25%;
+    transform: rotate(-8deg); 
+    z-index: 10;
+}
+
+.polaroid-card {
+    background-color: #f3f3f3;
+    padding: 15px 15px 30px 15px;
+    box-shadow: 10px 10px 25px rgba(0,0,0,0.5);
+    color: #000;
+}
+
+.profile-img {
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(120%); 
+}
+
+.polaroid-text {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Impact', sans-serif;
+    font-size: 0.9rem;
+}
+
+@keyframes rotateBadge {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- BLOCOS DE TEXTO (LADO DIREITO) --- */
+.content-text {
+    position: absolute;
+    right: 10%;
+    top: 25%;
+    width: 500px;
+}
+
+/* --- ANIMAÇÃO DE REVELAÇÃO SUAVE (FADE-IN) --- */
+@keyframes revelarTexto {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);    
+    }
+}
+
+.title-hi, .intro-p, .body-p {
+    opacity: 0; 
+    animation: revelarTexto 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.title-hi {
+    animation-delay: 0.2s;
+    font-size: 5rem;
+    font-family: 'Impact', sans-serif; 
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.intro-p {
+    animation-delay: 0.5s;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin-bottom: 25px;
+}
+
+.body-p:nth-of-type(1) {
+    animation-delay: 0.8s;
+}
+
+.body-p:nth-of-type(2) {
+    animation-delay: 1.1s;
+}
+
+.body-p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #cccccc; 
+    line-height: 1.5;
+}
+
+.custom-font-1 {
+    font-family: 'Georgia', serif; 
+    font-size: 1.4rem;
+    color: #fff;
+    font-style: italic;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.custom-font-2 {
+    font-family: 'Georgia', serif; 
+    font-size: 1.4rem;
+    color: #fff;
+    font-style: italic;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* --- BARRA DE REDES SOCIAIS --- */
+.social-ribbon {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.social-icon {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--surface-color);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+}
+
+.social-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:55px;
+    height:55px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    position:relative;
+    z-index:10;
+}
+
+.social-icon:hover {
+    color: #fff;
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+}
+
+/* --- ELEMENTOS DE DECORAÇÃO --- */
+.decor-flame-pink {
+    position: absolute;
+    left: 38%;
+    top: 40%;
+    width: 150px;
+    height: 200px;
+    background: url('assets/flame-pink.png') no-repeat center/contain;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* --- RODAPÉ DE CONTATOS --- */
+.footer-contact {
+    position: relative;
+    bottom: 40px;
+    width: 100%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-pill {
+    border: 1px solid #ffffff;
+    padding: 8px 20px;
+    border-radius: 50px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.btn-active {
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-pill:hover {
+    background-color: #ff0055; 
+    color: #fff;
+    border-color: #ff0055;
+}
+
+.separator {
+    color: var(--primary-color);
+}
+
+/* --- TEMA CLARO (SUPORTE OPCIONAL) --- */
+[data-theme="light"] header.scrolled {
+    background-color: rgba(240, 242, 245, 0.85);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.portfolio-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   7. STICKERS E ELEMENTOS DA CAPA
+   ========================================================================== */
+.sticker-smiley {
+    position: absolute;
+    bottom: -60px;  
+    left: 200px;  
+    width: 500px; 
+    transform: rotate(-15deg); 
+    z-index: 1; 
+    animation: rotateBadge 20s linear infinite;
+}
+
+.sticker-badge {
+    position: absolute;
+    top: -60px;
+    left: -50px;
+    width: 130px;
+    z-index: 3; 
+    transform: rotate(-20deg); 
+}
+
+.Elemento2 {
+    filter: invert(1);
+    -webkit-filter: invert(1);
+    position: absolute;
+    letter-spacing: 5px;
+    align-items: center;
+    top: 300px;
+    right: 235px;
+}
+
+.Elemento3 {
+    filter: invert(1);
+    -webkit-filter: invert(1);
+    transform: rotate(-180deg);
+    position: absolute;
+    letter-spacing: 5px;
+    top: -150px;
+    left: 260px;
+}
+
+/* --- ESTRELAS --- */
+.star {
+    position: absolute;
+    top: 365px; right: 528px;
+    font-size: 3rem;
+    color: var(--primary-color);
+    transform: rotate(30deg);
+    z-index: 0;
+}
+
+.star2 {
+    position: absolute;
+    top: 362px; left: 645px;
+    font-size: 3rem;
+    color: var(--primary-color);
+    transform: rotate(60deg);
+}
+
+.star3 {
+    position: absolute;
+    top: 228px; left: 678px;
+    font-size: 3rem;
+    color: var(--primary-color);
+    transform: rotate(20deg);
+    z-index: 0;
+}
+
+/* --- BADGES SUBTITLES FLUTUANTES --- */
+.subtitle1 {
+    position: absolute;
+    top: 100px; left: 560px;
+    font-family: 'arial', sans-serif;
+    color: var(--primary-color);
+    font-size: 1rem;
+    transform: rotate(-12deg);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 5px 15px;
+    z-index: 10;
+}
+
+.subtitle2 {
+    position: absolute;
+    top: 470px; right: 32rem;
+    font-family: 'arial', sans-serif;
+    color: var(--primary-color);
+    font-size: 1rem;
+    transform: rotate(10deg);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 5px 15px;
+    z-index: 10;
+}
+
+.subtitle3 {
+    position: absolute;
+    top: 300px; left: 425px;
+    font-family: 'arial', sans-serif;
+    color: var(--primary-color);
+    font-size: 1rem;
+    transform: rotate(30deg);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 5px 15px;
+    z-index: 10;
+}
+
+.subtitle4 {
+    position: absolute;
+    top: 175px; right: 430px; 
+    font-family: 'arial', sans-serif;
+    color: var(--primary-color);
+    font-size: 1rem;
+    transform: rotate(12deg);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 5px 15px;
+    z-index: 10;
+}
+
+.subtitle5 {
+    position: absolute;
+    top: 460px; left: 430px;
+    font-family: 'arial', sans-serif;
+    color: var(--primary-color);
+    font-size: 1rem;
+    transform: rotate(-12deg);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 5px 15px;
+    z-index: 10;
+}
+
+/* --- ANIMAÇÃO DE FLUTUAÇÃO SUAVE --- */
+@keyframes flutuar {
+    0% {
+        transform: translateY(0px) rotate(var(--rotacao-original));
+    }
+    50% {
+        transform: translateY(-10px) rotate(var(--rotacao-original)); 
+    }
+    100% {
+        transform: translateY(0px) rotate(var(--rotacao-original));
+    }
+}
+
+.subtitle1 { --rotacao-original: -12deg; animation: flutuar 4s ease-in-out infinite; }
+.subtitle2 { --rotacao-original: 10deg; animation: flutuar 4.5s ease-in-out infinite; animation-delay: 0.5s; }
+.subtitle3 { --rotacao-original: 30deg; animation: flutuar 5s ease-in-out infinite; animation-delay: 0.2s; }
+.subtitle4 { --rotacao-original: 12deg; animation: flutuar 4.2s ease-in-out infinite; animation-delay: 0.7s; }
+.subtitle5 { --rotacao-original: -12deg; animation: flutuar 4.8s ease-in-out infinite; animation-delay: 0.4s; }
+
+/* ==========================================================================
+   8. SEÇÃO SKILLS
+   ========================================================================== */
+/* ==========================================================================
+   NOVA SEÇÃO DE SKILLS (ESTILO BADGES/PILLS CAPSULA)
+   ========================================================================== */
+.skills-capsule-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinhado à esquerda seguindo o padrão do seu "OLÁ!" */
+    z-index: 10;
+}
+
+.skills-capsule-title {
+    font-family: 'Impact', sans-serif;
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+/* Container que junta todas as linhas */
+.skills-capsule-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Espaçamento vertical entre as fileiras */
+    width: 100%;
+}
+
+/* Organização de cada fileira de pílulas */
+.skills-capsule-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px; /* Espaçamento horizontal entre as pílulas */
+}
+
+/* Criando um leve desalinhamento proposital nas linhas para dar o efeito dinâmico */
+.skills-capsule-row:nth-child(1) { transform: rotate(-0.5deg); padding-left: 0; }
+.skills-capsule-row:nth-child(2) { transform: rotate(0.8deg); padding-left: 30px; }
+.skills-capsule-row:nth-child(3) { transform: rotate(-0.3deg); padding-left: 15px; }
+
+/* Estrutura base da Pílula (Pill) */
+.pill-badge {
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 14px 36px;
+    border-radius: 50px; /* Deixa as pontas totalmente redondas */
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+/* Variante Escura (Fundo Grafite / Letra Clara) */
+.pill-badge.pill-dark {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Variante Clara (Fundo Off-White / Letra Escura) */
+.pill-badge.pill-light {
+    background-color: #e2e2e2;
+    color: #0b0b0b;
+    border: 1px solid transparent;
+}
+
+/* Efeito Interativo de Hover (Inversão Grunge Vermelha ao passar o mouse) */
+.pill-badge:hover {
+    background-color: var(--primary-color, #e53e3e);
+    color: #ffffff;
+    border-color: var(--primary-color, #e53e3e);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(229, 62, 62, 0.2);
+}
+/* ==========================================================================
+   9. CONFIGURAÇÃO E ANIMAÇÃO DOS OLHOS
+   ========================================================================== */
+.olho1 {
+    position: absolute;
+    left: 2.5rem;
+    top: 35rem;        
+    width: 400px;       
+    height: auto;
+    filter: invert(1);
+    -webkit-filter: invert(1);
+    z-index: 0; 
+    transform: none; 
+}
+
+.olho2 {
+    position: absolute;
+    right: 2.5rem;
+    left: 70rem;
+    top: 1.5rem;
+    width: 400px;       
+    height: auto;
+    filter: invert(1);
+    -webkit-filter: invert(1);
+    z-index: 0; 
+    transform: none; 
+}
+
+.olho3 {
+    position: absolute;
+    right: 22rem;
+    bottom: 1rem;        
+    width: 400px;       
+    height: auto;
+    filter: invert(1);
+    -webkit-filter: invert(1);
+    z-index: 0; 
+    transform: none; 
+}
+
+@keyframes piscarOlho {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+}
+
+@keyframes olharLados {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-8px, 2px); }
+    75% { transform: translate(8px, -2px); }
+}
+
+.olho1 {
+    filter: invert(1);
+    -webkit-filter: invert(1);
+    animation: piscarOlho 5s ease-in-out infinite;
+}
+
+.olho2 {
+    filter: invert(1);
+    -webkit-filter: invert(1);
+    animation: olharLados 6s ease-in-out infinite;
+}
+
+.olho3 {
+    filter: invert(1);
+    -webkit-filter: invert(1);
+    animation: olharLados 6s ease-in-out infinite;
+}
+/* =======================================================
+   PROJETOS
+======================================================= */
+
+.projects-section{
+    width:100%;
+    min-height:100vh;
+
+    background:transparent;
+
+    padding:120px 0;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+/* =======================================================
+   TEXTO GIGANTE DE FUNDO
+======================================================= */
+
+.projects-section::before{
+
+    content:"PROJECTS";
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    font-size:15rem;
+
+    font-weight:900;
+
+    color:#ffffff04;
+
+    pointer-events:none;
+}
+
+/* =======================================================
+   TITULO
+======================================================= */
+
+.projects-title{
+
+    padding:0 8%;
+
+    margin-bottom:60px;
+}
+
+/* TEXTO PEQUENO */
+/* TITULO GRANDE */
+
+.projects-title h1{
+
+    color:#fff;
+
+    font-size:6rem;
+
+    font-weight:900;
+}
+
+/* =======================================================
+   CARROSSEL
+======================================================= */
+
+.carousel{
+
+    width:100%;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+/* TRACK QUE SE MOVE */
+
+.carousel-track{
+
+    display:flex;
+
+    gap:30px;
+
+    width:max-content;
+
+    animation:scroll 20s linear infinite;
+}
+
+/* PAUSA QUANDO PASSA O MOUSE */
+
+.carousel:hover .carousel-track{
+
+    animation-play-state:paused;
+}
+
+/* =======================================================
+   CARD DO PROJETO
+======================================================= */
+
+.project-card{
+
+    width:380px;
+
+    background:#0d0d0d;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    transition:.4s;
+
+    flex-shrink:0;
+
+    position:relative;
+}
+
+/* =======================================================
+   GLOW VERMELHO
+======================================================= */
+
+.project-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:200px;
+    height:200px;
+
+    background:#ff0000;
+
+    filter:blur(120px);
+
+    opacity:.12;
+
+    top:-50px;
+    right:-50px;
+}
+
+/* =======================================================
+   EFEITO HOVER
+======================================================= */
+
+.project-card:hover{
+
+    transform:translateY(-10px);
+
+    border:1px solid #ff2a2a;
+
+    box-shadow:
+    0 0 30px rgba(255,0,0,0.2);
+}
+
+/* =======================================================
+   IMAGEM
+======================================================= */
+
+.project-card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+}
+
+/* =======================================================
+   CONTEÚDO
+======================================================= */
+
+.project-content{
+
+    padding:25px;
+}
+
+/* TITULO */
+
+.project-content h2{
+
+    color:#fff;
+
+    font-size:1.7rem;
+
+    margin-bottom:15px;
+}
+
+/* TEXTO */
+
+.project-content p{
+
+    color:#bdbdbd;
+
+    line-height:1.7;
+
+    margin-bottom:20px;
+}
+
+/* =======================================================
+   TAGS
+======================================================= */
+
+.tags{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:25px;
+}
+
+/* TAG INDIVIDUAL */
+
+.tags span{
+
+    border:1px solid #ff2a2a;
+
+    color:#ff2a2a;
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    font-size:0.8rem;
+}
+
+/* =======================================================
+   BOTÃO
+======================================================= */
+
+.project-content a{
+
+    display:inline-block;
+
+    padding:12px 22px;
+
+    background:#ff2a2a;
+
+    color:#fff;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+/* HOVER BOTÃO */
+
+.project-content a:hover{
+
+    background:#fff;
+
+    color:#000;
+}
+
+/* =======================================================
+   ANIMAÇÃO DO CARROSSEL
+======================================================= */
+
+@keyframes scroll{
+
+    from{
+
+        transform:translateX(0);
+    }
+
+    to{
+
+        transform:translateX(-50%);
+    }
+
+}
+
+/* =======================================================
+   RESPONSIVO
+======================================================= */
+
+@media(max-width:768px){
+
+    /* TITULO */
+
+    .projects-title h1{
+
+        font-size:4rem;
+    }
+
+    /* CARD */
+
+    .project-card{
+
+        width:300px;
+    }
+
+}
