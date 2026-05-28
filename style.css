@@ -1061,3 +1061,226 @@ header.scrolled {
     }
 
 }
+
+/* =======================================================
+   RESPONSIVIDADE MOBILE
+======================================================= */
+
+@media (max-width: 768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    /* HEADER */
+
+    .header-container{
+        padding:0 20px;
+    }
+
+    .nav-menu{
+        display:none;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    /* HERO */
+
+    .hero-title-container{
+        padding:120px 20px 40px;
+        min-height:auto;
+    }
+
+    .main-title,
+    .main-title .F{
+        font-size:4rem;
+        line-height:1;
+        text-align:center;
+    }
+
+    /* SOBRE */
+
+    .portfolio-container{
+
+        width:100%;
+        height:auto;
+
+        display:flex;
+        flex-direction:column;
+
+        align-items:center;
+
+        padding:40px 20px;
+
+        overflow:visible;
+    }
+
+    .polaroid-wrapper{
+
+        position:relative;
+
+        left:auto;
+        top:auto;
+
+        transform:rotate(-5deg);
+
+        margin-bottom:40px;
+    }
+
+    .profile-img{
+
+        width:220px;
+        height:280px;
+    }
+
+    .content-text{
+
+        position:relative;
+
+        right:auto;
+        top:auto;
+
+        width:100%;
+
+        text-align:center;
+    }
+
+    .title-hi{
+
+        font-size:3rem;
+    }
+
+    .intro-p{
+
+        font-size:1rem;
+    }
+
+    .body-p{
+
+        font-size:0.95rem;
+    }
+
+    /* REDES */
+
+    .social-ribbon{
+
+        justify-content:center;
+
+        flex-wrap:wrap;
+    }
+
+    /* ELEMENTOS DECORATIVOS */
+
+    .decor-flame-pink,
+    .sticker-smiley,
+    .sticker-badge,
+    .Elemento2,
+    .Elemento3,
+    .star,
+    .star2,
+    .star3,
+    .subtitle1,
+    .subtitle2,
+    .subtitle3,
+    .subtitle4,
+    .subtitle5,
+    .olho1,
+    .olho2,
+    .olho3{
+
+        display:none;
+    }
+
+    /* SKILLS */
+
+    .skills-capsule-section{
+
+        padding:0 20px;
+
+        margin:60px auto;
+    }
+
+    .skills-capsule-title{
+
+        font-size:2.5rem;
+        text-align:center;
+        width:100%;
+    }
+
+    .skills-capsule-row{
+
+        justify-content:center;
+
+        padding-left:0 !important;
+
+        transform:none !important;
+    }
+
+    .pill-badge{
+
+        font-size:0.9rem;
+
+        padding:12px 20px;
+    }
+
+    /* PROJETOS */
+
+    .projects-section{
+
+        padding:80px 0;
+    }
+
+    .projects-section::before{
+
+        font-size:5rem;
+    }
+
+    .projects-title{
+
+        padding:0 20px;
+
+        text-align:center;
+    }
+
+    .projects-title h1{
+
+        font-size:3rem;
+    }
+
+    .carousel-track{
+
+        gap:20px;
+    }
+
+    .project-card{
+
+        width:280px;
+    }
+
+    .project-content h2{
+
+        font-size:1.3rem;
+    }
+
+    .project-content p{
+
+        font-size:0.9rem;
+    }
+
+    /* FOOTER */
+
+    .footer-contact{
+
+        padding:40px 20px;
+    }
+
+    .contact-links{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+    }
+
+}
